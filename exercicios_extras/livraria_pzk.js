@@ -23,10 +23,21 @@ const livraria = {
         });
     },
 
-    pesquisarLivro: function(nome) {
+    pesquisarLivro: function(titulo, autor) {
+        const funcaoPesquisa = (livro) =>
+            livro.titulo === titulo && livro.autor === autor
+        console.log(`o tipo da variavel funcaoPesquisa eh: ${typeof funcaoPesquisa}`)
+
+        return this.livros.find(funcaoPesquisa) 
     },    
 }
 
 livraria.adicionarLivro('Harry', 'J.K');
-livraria.exibirLivro();
-livraria.pesquisarLivro('Harry')
+livraria.adicionarLivro('Senhor dos Aneis', 'J.R.R. Tolkien')
+livraria.adicionarLivro('Goblin', 'Caue')
+livraria.adicionarLivro('Logica de Programacao', 'Claudio Luis')
+livraria.adicionarLivro('Programacao em Python', 'Eduardo Mendes')
+// livraria.exibirLivro();
+const livroEncontrado = livraria.pesquisarLivro('Logica de Programacao', 'Claudio Luis')
+console.log(`o tipo da variavel livroEncontrado e ${typeof livroEncontrado}`)
+console.log(`O livro ${livroEncontrado?'encontrado':'nao encontrado'} foi ${livroEncontrado?.titulo} do Autor ${livroEncontrado?.autor}`)
